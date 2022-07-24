@@ -1,0 +1,81 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Расписание работы морского порта</title>
+        <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+        <link rel="shortcut icon" type="image/png" href="{% static "img/favicon.ico" %}">
+
+
+
+
+        <script type="text/javascript">
+            function clock() {
+            var d = new Date();
+            var month_num = d.getMonth()
+            var day = d.getDate();
+            var hours = d.getHours();
+            var minutes = d.getMinutes();
+            var seconds = d.getSeconds();
+
+            month=new Array("января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря");
+
+            if (day <= 9) day = "0" + day;
+            if (hours <= 9) hours = "0" + hours;
+            if (minutes <= 9) minutes = "0" + minutes;
+            if (seconds <= 9) seconds = "0" + seconds;
+
+            date_time = hours + ":" + minutes + ":" + seconds + "</br>" + day + " " + month[month_num] + " " + d.getFullYear();
+            if (document.layers) {
+             document.layers.doc_time.document.write(date_time);
+             document.layers.doc_time.document.close();
+            }
+            else document.getElementById("doc_time").innerHTML = date_time;
+             setTimeout("clock()", 1000);
+            }
+        </script>
+
+    </head>
+
+
+<div style="padding-top: 15px; margin-bottom: 100px; height:100px;" class="topbar">
+  <div class="name" style="width: 45%; height:100px; position:absolute; left:0px;">
+      <a href="..">Расписание Работы Морского Порта</a>
+  </div>
+
+  <div class="time" style="width: 25%; height:100px; position:absolute; left:45%;">
+      <span id="doc_time">
+                Дата и время
+            </span>
+
+            <script type="text/javascript">
+                clock();
+            </script>
+  </div>
+
+  <div class="login" style="width: 25%; height:100px; position:absolute; left:70%;">
+      {% if username %}
+          <h3 align="center" style="color:wheat">{{ username }}</h3>
+          <a href="http://127.0.0.1:8000/logout/"><p align="center">Выйти</p></a>
+      {% else %}
+          <a href="http://127.0.0.1:8000/login/"><p align="center">Войти</p></a>
+      {% endif%}
+  </div>
+</div >
+
+    <div class="content">
+    {% block index %}{% endblock %}
+    {% block all_transport %}{% endblock %}
+    {% block edit %}{% endblock %}
+    {% block in_port %}{% endblock %}
+    {% block out_port %}{% endblock %}
+    {% block port_search %}{% endblock %}
+    {% block transport_search %}{% endblock %}
+    {% block login %}{% endblock %}
+    {% block add_user %}{% endblock %}
+
+    </div>
+
+    </body>
+</html>

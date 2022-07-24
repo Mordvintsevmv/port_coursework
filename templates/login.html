@@ -1,0 +1,23 @@
+{% extends "main.html" %}
+{%  block login%}
+    <div>
+    <form method="POST" class="login_form">
+         {% csrf_token %}
+        <ul>
+            <li><label for="username">Логин: </label></li>
+        <input type="text" name="username" id="username" value="{{ username }}">
+
+        <p><br></p>
+            <li><label for="password">Пароль: </label></li>
+        <input type="password" name="password" id="password" value="{{ password }}">
+        <p><br></p>
+        <div style="color:red">{{ login_error }}</div>
+
+
+
+        <input class="button" type="submit" value="Войти">
+        </ul>
+    </form>
+    </div>
+
+{% endblock %}

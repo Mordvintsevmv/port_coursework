@@ -1,0 +1,67 @@
+{% extends "main.html" %}
+
+{% block out_port %}
+    {% if check %}
+
+
+            <div class="warning">
+            <p>Доступные порты:</p>
+                {% for transp in seaport_data %}
+                {% for tr in transp.transport %}
+                {% for tr1 in tr.sudno %}
+                {% for trout in tr.out_punkt %}
+                {% for trin in tr.in_punkt %}
+                {{ trout.name_port }}
+                    <br>
+                {% endfor %}
+                {% endfor %}
+                {% endfor %}
+                {% endfor %}
+                {% endfor %}
+                <br>
+            </div>
+
+            <div class="block">
+                <form method="POST">
+                     {% csrf_token %}
+
+                    <label for="port_name">Введите порт отбытия: </label>
+                    <input id="port_name" type="text" name="port" value="{{ port_name }}">
+                    <input type="submit" value="OK">
+                </form>
+            </div>
+
+            <table style="width:100%;border-collapse:collapse" border="1" >
+
+                <tr class="osn">
+                    <td>Транспортировка</td>
+                    <td>Название судна</td>
+                    <td>Тип судна</td>
+                    <td>Время и место отбытия</td>
+                    <td>Время и место прибытия</td>
+                </tr>
+                {% for transp in seaport_data %}
+                {% for tr in transp.transport %}
+                {% for tr1 in tr.sudno %}
+                {% for trout in tr.out_punkt %}
+                {% for trin in tr.in_punkt %}
+                    {% if port_name == trout.name_port %}
+                    <tr>
+                        <td>{{ tr.id }}</td>
+                        <td>{{ tr1.name_sudno }}</td>
+                        <td>{{ tr1.type }}</td>
+                        <td>{{ trout.name_port }} / {{ trout.out_time }}</td>
+                        <td>{{ trin.name_port }} / {{ trin.in_time }}</td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+                {% endfor %}
+                {% endfor %}
+                {% endfor %}
+                {% endfor %}
+
+            </table>
+{% else %}
+    <h1>Вам необходимо войти в свой аккаунт, чтобы просматривать информацию!</h1>
+{% endif %}
+{% endblock %}

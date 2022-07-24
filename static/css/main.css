@@ -1,0 +1,102 @@
+
+html {
+    background: url(../img/fon.png) ;
+    color: #2b2b28;
+    border-color: azure;
+    font-family: "Trebuchet MS";
+}
+
+body{
+    padding-top:5px;
+    background: url(../img/text_fon.png) ;
+    box-shadow: 0 0 100px rgba(0,0,0,0.5);
+
+}
+
+div{
+    margin: -7px 15px 15px 15px;
+    padding: 5px 5px 5px 5px;
+}
+
+table{
+    border: 5px;
+    color:black;
+    background: wheat;
+}
+
+.topbar{
+    margin-top: 1px;
+    background: #151719;
+    color: wheat;
+}
+
+.name{
+    font-size: 150%;
+    float: left;
+    сolor: wheat;
+    text-align:center;
+}
+
+.time {
+    float: right;
+    font-size: 150%;
+    color: wheat;
+    text-align:center;
+}
+
+.login{
+    color: wheat;
+    text-align:center;
+}
+
+.osn {
+    color: darkred;
+}
+
+.main{
+}
+
+.content{
+    font-size: 120%;
+}
+
+.login_form li{
+        list-style-type: none;
+
+}
+.login_form{
+    text-align: center;
+    position: relative;
+}
+
+.warning{
+    color: darkred;
+}
+
+button{
+    position: relative;
+    left:50%;
+}
+
+.topbar A {
+    color: wheat; /* Цвет ссылок */
+    }
+.topbar A:visited {
+    color: wheat; /* Цвет посещенных ссылок */
+   }
+.topbar A:active {
+    color: wheat; /* Цвет активных ссылок */
+   }
+
+A {
+    color: black; /* Цвет ссылок */
+    }
+A:visited {
+    color: black; /* Цвет посещенных ссылок */
+   }
+A:active {
+    color: black; /* Цвет активных ссылок */
+   }
+
+
+

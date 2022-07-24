@@ -1,0 +1,37 @@
+{%   extends "main.html" %}
+{% block index %}
+
+        <div class="main">
+            <div class="all_transport">
+                <a href="/all_transport">Просмотр всех транспортировок</a>
+            </div>
+
+            <div class="search">
+
+                <div class="search-text">Поиск по:</div>
+                <div class="byport">
+                    <a href="/port_search">Порту</a>
+                </div>
+                <div class="byin">
+                    <a href="/in_port">Пункту прибытия</a>
+                </div>
+                <div class="byout">
+                    <a href="/out_port">Пункту отбытия</a>
+                </div>
+                <div class="bytransport">
+                    <a href="/transport_search">Транспортировке</a>
+                </div>
+
+
+            </div>
+
+            <div class="edit">
+                <a href="/edit">Добавить транспортировку</a>
+            </div>
+
+            <div class="add_user">
+                <a href="/add_user">Добавить пользователя</a>
+            </div>
+
+        </div>
+{% endblock %}

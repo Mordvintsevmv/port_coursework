@@ -1,0 +1,42 @@
+{% extends "main.html" %}
+
+{% block all_transport %}
+    {% if check %}
+
+        <div class="glav">
+            <table style="width:100%;border-collapse:collapse;" border="1">
+
+                <tr class="osn">
+                    <td>Транспортировка</td>
+                    <td>Порт</td>
+                    <td>Название судна</td>
+                    <td>Тип судна</td>
+                    <td>Место и время отбытия</td>
+                    <td>Место и время прибытия</td>
+                </tr>
+                {% for transp in seaport_data %}
+                {% for tr in transp.transport %}
+                {% for tr1 in tr.sudno %}
+                {% for trout in tr.out_punkt %}
+                {% for trin in tr.in_punkt %}
+                    <tr>
+                        <td>{{ tr.id }}</td>
+                        <td>{{ transp.name_port }}</td>
+                        <td>{{ tr1.name_sudno }}</td>
+                        <td>{{ tr1.type }}</td>
+                        <td>{{ trout.name_port }} / {{ trout.out_time }}</td>
+                        <td>{{ trin.name_port }} / {{ trin.in_time }}</td>
+                    </tr>
+                {% endfor %}
+                {% endfor %}
+                {% endfor %}
+                {% endfor %}
+                {% endfor %}
+
+            </table>
+
+        </div>
+    {% else %}
+    <h1>Вам необходимо войти в свой аккаунт, чтобы просматривать информацию!</h1>
+{% endif %}
+{% endblock %}

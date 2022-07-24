@@ -1,0 +1,56 @@
+{% extends "main.html" %}
+
+{% block add_user %}
+{% if check %}
+            <div class="block">
+                <form method="POST">
+                     {% csrf_token %}
+                    <div class = "warning">
+                    {{ warning }}
+                    {{ user_start }}
+                    {{ user_success }}
+                    {{ user_warning }}
+                    </div>
+                    <ul>
+                    <li><label for="port_name">Имя пользователя:</label>
+                        <input id="port_name" type="text" name="username" value=""></li>
+
+                        <li><label for="ID">Пароль:</label>
+                            <input id="ID" type="password" name="password" value=""></li>
+
+                                <li><label for="port_name">Телефон:</label>
+                                    <input id="port_name" type="text" name="phone" value=""></li>
+
+                                <li><label for="port_name">e-mail:</label>
+                                <input id="port_name" type="email" name="email" value=""></li>
+
+                                <li><label for="port_name">Имя:</label>
+                                <input id="port_name" type="text" name="name" value=""></li>
+
+                                <li><label for="port_name">Фамилия:</label>
+                                <input id="port_name" type="text" name="surname" value=""></li>
+
+                                    <li><label for="gender">Пол:</label>
+                                        <select name="gender">
+                                            <option selected value="Male">Male</option>
+                                            <option value="Feamle">Female</option>
+                                           </select>
+                                    </li>
+
+                                    <li><label for="permission">Роль:</label>
+                                        <select name="permission">
+                                            <option selected value="User">User</option>
+                                            <option value="Stuff">Stuff</option>
+                                            <option value="Admin">Admin</option>
+                                        </select>
+                                    </li>
+
+                    </ul>
+
+                    <input type="submit" value="ОТПРАВИТЬ">
+                </form>
+            </div>
+{% else %}
+    <h1>У Вас нет прав посещать эту страницу!</h1>
+{% endif %}
+{% endblock %}

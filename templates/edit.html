@@ -1,0 +1,71 @@
+{% extends "main.html" %}
+
+{% block edit %}
+{% if check %}
+            <div class="block">
+                <form method="POST">
+                     {% csrf_token %}
+                    <div class = "warning">
+                    {{ warning }}
+                    {{ start }}
+                    {{ success }}
+                    {{ ID_warning }}
+                    </div>
+                    <ul>
+                    <li><label for="port_name">Порт:</label>
+                        <input id="port_name" type="text" name="port_name" value=""></li>
+
+                    <li><label for="ID">Транспортировка:</label>
+
+                        <ul>
+                            <li><label for="ID">ID:</label>
+                                <input id="ID" type="text" name="ID" value=""></li>
+
+                            <li><label for="Sudno">Судно:</label>
+
+                            <ul>
+                                <li><label for="sudno">Название:</label>
+                                    <input id="sudno" type="text" name="sudno" value=""></li>
+
+                                <li><label for="model">Модель:</label>
+                                <input id="model" type="text" name="model" value=""></li>
+
+                                <li><label for="type">Тип:</label>
+                                            <select name="type">
+                                            <option selected value="Пассажирский">Пассажирский</option>
+                                            <option value="Грузовой">Грузовой</option>
+                                           </select>
+                                <li><label for="charac">Характеристика:</label>
+                                <input id="charac" type="text" name="charac" value=""></li>
+                            </ul>
+
+                            <li><label for="punkt">Пункт отбытия:</label>
+
+                                <ul>
+                                    <li><label for="port_out">Название порта:</label>
+                                         <input id="port_out" type="text" name="port_out" value=""></li>
+
+                                    <li><label for="time_out">Время отбытия:</label>
+                                         <input id="time_out" type="time" name="time_out" value=""></li>
+                                </ul>
+
+                            <li><label for="punkt">Пункт прибытия:</label>
+
+                                <ul>
+                                    <li><label for="port_in">Название порта:</label>
+                                         <input id="port_in" type="text" name="port_in" value=""></li>
+
+                                    <li><label for="time_in">Время прибытия:</label>
+                                         <input id="time_in" type="time" name="time_in" value=""></li>
+                                </ul>
+                        </ul>
+
+                    </ul>
+
+                    <input type="submit" value="ОТПРАВИТЬ">
+                </form>
+            </div>
+{% else %}
+    <h1>У Вас нет прав посещать эту страницу!</h1>
+{% endif %}
+{% endblock %}

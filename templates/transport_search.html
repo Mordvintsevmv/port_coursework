@@ -1,0 +1,68 @@
+{% extends "main.html" %}
+
+{% block transport_search %}
+    {% if check %}
+
+
+            <div class="warning">
+            <p>Доступные транспортировки:</p>
+                {% for transp in seaport_data %}
+                {% for tr in transp.transport %}
+                {% for tr1 in tr.sudno %}
+                {% for trout in tr.out_punkt %}
+                {% for trin in tr.in_punkt %}
+                {{ tr.id }}
+                    <br>
+                {% endfor %}
+                {% endfor %}
+                {% endfor %}
+                {% endfor %}
+                {% endfor %}
+                <br>
+            </div>
+
+            <div class="block">
+                <form method="POST">
+                    {% csrf_token %}
+                    <label for="port_name">Введите название транспортировки: </label>
+                    <input id="port_name" type="text" name="transport" value="{{ transport }}">
+                    <input type="submit" value="OK">
+                </form>
+            </div>
+
+            <table style="width:100%;border-collapse:collapse" border="1">
+
+                <tr class="osn">
+                    <td>Порт</td>
+                    <td>Название судна</td>
+                    <td>Тип судна</td>
+                    <td>Характеристика судна</td>
+                    <td>Время и место отбытия</td>
+                    <td>Время и место прибытия</td>
+                </tr>
+                {% for transp in seaport_data %}
+                {% for tr in transp.transport %}
+                {% for tr1 in tr.sudno %}
+                {% for trout in tr.out_punkt %}
+                {% for trin in tr.in_punkt %}
+                    {% if transport == tr.id %}
+                    <tr>
+                        <td>{{ transp.name_port }}</td>
+                        <td>{{ tr1.name_sudno }}</td>
+                        <td>{{ tr1.type }}</td>
+                        <td>{{ tr1.char }}</td>
+                        <td>{{ trout.name_port }} / {{ trout.out_time }}</td>
+                        <td>{{ trin.name_port }} / {{ trin.in_time }}</td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+                {% endfor %}
+                {% endfor %}
+                {% endfor %}
+                {% endfor %}
+
+            </table>
+{% else %}
+    <h1>Вам необходимо войти в свой аккаунт, чтобы просматривать информацию!</h1>
+{% endif %}
+{% endblock %}
